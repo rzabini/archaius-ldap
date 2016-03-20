@@ -15,45 +15,28 @@ class LDAPConfigurationSourceTest extends LDAPSpecification {
             .getLogger(LDAPConfigurationSourceTest.class);
 
 
-    def "exception thrown if base dn not found"() {
-        String nonExistingNode = 'cn=NoConfiguration'
-        LDAPConfigurationSource source = new LDAPConfigurationSource(testLDAPInterface,
-                new LDAPConfigurationStrategy(nonExistingNode, new Attribute('cn'), new Attribute('description')))
-        FixedDelayPollingScheduler scheduler = new FixedDelayPollingScheduler(0, 10, false)
-
-        when:
-        DynamicConfiguration configuration = new DynamicConfiguration(source, scheduler)
-
-        then:
-        RuntimeException ex = thrown()
-        ex.cause.message == "cannot find base DN: $nonExistingNode"
-
-    }
-
-    def "can read configuration from LDAP node"() {
-
-        given:
+    def setupSpec() {
         LDAPConfigurationSource source = new LDAPConfigurationSource(testLDAPInterface,
                 new LDAPConfigurationStrategy('cn=Configuration', new Attribute('cn'), new Attribute('description')))
         FixedDelayPollingScheduler scheduler = new FixedDelayPollingScheduler(0, 10, false)
 
-        when:
+
         DynamicConfiguration configuration = new DynamicConfiguration(source, scheduler)
         DynamicPropertyFactory.initWithConfigurationSource(configuration)
 
+    }
 
-        DynamicStringProperty defaultProp = DynamicPropertyFactory.getInstance().getStringProperty(
-                "this.prop.does.not.exist.use.default", "default");
-
-        then:
-        defaultProp.get() == "default"
-
+    def "can read configuration from LDAP node"(property, value) {
         when:
-        DynamicStringProperty prop1 = DynamicPropertyFactory.getInstance().getStringProperty(
-                "prop1", "default");
+        DynamicStringProperty actualProperty = DynamicPropertyFactory.getInstance().getStringProperty(property, "default");
+
         then:
-        prop1.get() == "value1"
+        actualProperty.get() == value
 
-
+        where:
+        property                |value
+        "not.existing.prop"     |"default"
+        "prop1"                 |"value1"
+        "prop1.sub1"            |"value1-sub1"
     }
 }
