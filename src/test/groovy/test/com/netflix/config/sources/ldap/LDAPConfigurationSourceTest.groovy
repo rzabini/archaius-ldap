@@ -40,5 +40,6 @@ class LDAPConfigurationSourceTest extends LDAPSpecification {
         "not.existing.prop"     |"default"
         "prop1"                 |"value1"
         "prop1.sub1"            |"value1-sub1"
+        "prop1.sub2"            |"prop1-sub2"
     }
 }
