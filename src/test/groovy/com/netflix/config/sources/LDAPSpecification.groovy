@@ -14,7 +14,7 @@ class LDAPSpecification extends Specification {
     @Shared
     InMemoryDirectoryServer ds
 
-    LDAPInterface getTestLDAPInterface() {
+    def setupSpec() {
         InMemoryDirectoryServerConfig config =  new InMemoryDirectoryServerConfig("dc=example,dc=com");
         ds = new InMemoryDirectoryServer(config);
 
@@ -23,7 +23,9 @@ class LDAPSpecification extends Specification {
         ds.importFromLDIF(true, ldifReader);
         ds.startListening();
 
-        Schema schema = ds.getSchema()
+    }
+
+    LDAPInterface getTestLDAPInterface() {
 
         LDAPConnection conn = ds.getConnection();
         String[] hostAndPort = conn.getHostPort().split(':')
