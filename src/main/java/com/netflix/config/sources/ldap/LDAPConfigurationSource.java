@@ -1,4 +1,4 @@
-package com.netflix.config.sources;
+package com.netflix.config.sources.ldap;
 
 import com.netflix.config.PollResult;
 import com.netflix.config.PolledConfigurationSource;

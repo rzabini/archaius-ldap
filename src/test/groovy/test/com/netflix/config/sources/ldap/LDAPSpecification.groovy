@@ -1,4 +1,4 @@
-package com.netflix.config.sources
+package test.com.netflix.config.sources.ldap
 
 import com.unboundid.ldap.listener.InMemoryDirectoryServer
 import com.unboundid.ldap.listener.InMemoryDirectoryServerConfig
