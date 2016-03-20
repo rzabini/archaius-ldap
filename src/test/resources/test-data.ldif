@@ -1,0 +1,33 @@
+dn: dc=example,dc=com
+objectClass: domain
+objectClass: top
+dc: example
+
+dn: ou=Configuration,dc=example,dc=com
+objectClass: top
+objectClass: organizationalunit
+ou: Configuration
+
+dn: cn=prop1,ou=Configuration,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: extensibleobject
+cn: prop1
+sn: pippo
+description: value1
+
+dn: ou=People,dc=example,dc=com
+objectClass: organizationalunit
+objectClass: top
+ou: People
+
+dn: uid=admin,ou=People,dc=example,dc=com
+objectClass: person
+#objectClass: cos
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: admin
+userpassword: password
+cn: admin
+sn: admin

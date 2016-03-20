@@ -1,0 +1,20 @@
+group 'com.github'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.netflix.archaius:archaius-core:0.7.4'
+    compile 'com.unboundid:unboundid-ldapsdk:3.1.0'
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+}
+
