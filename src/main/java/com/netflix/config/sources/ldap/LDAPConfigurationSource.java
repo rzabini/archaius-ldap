@@ -2,11 +2,10 @@ package com.netflix.config.sources.ldap;
 
 import com.netflix.config.PollResult;
 import com.netflix.config.PolledConfigurationSource;
-import com.unboundid.ldap.sdk.*;
+import com.unboundid.ldap.sdk.LDAPInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class LDAPConfigurationSource implements PolledConfigurationSource {
