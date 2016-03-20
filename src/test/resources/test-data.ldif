@@ -3,17 +3,15 @@ objectClass: domain
 objectClass: top
 dc: example
 
-dn: ou=Configuration,dc=example,dc=com
+dn: cn=Configuration,dc=example,dc=com
 objectClass: top
-objectClass: organizationalunit
-ou: Configuration
+objectClass: namedObject
 
-dn: cn=prop1,ou=Configuration,dc=example,dc=com
+dn: cn=prop1,cn=Configuration,dc=example,dc=com
 objectClass: top
-objectClass: person
+objectClass: namedObject
 objectClass: extensibleobject
 cn: prop1
-sn: pippo
 description: value1
 
 dn: ou=People,dc=example,dc=com

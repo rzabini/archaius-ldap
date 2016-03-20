@@ -16,7 +16,7 @@ class LDAPConfigurationSourceTest extends LDAPSpecification {
 
 
     def "exception thrown if base dn not found"() {
-        String nonExistingNode = 'ou=NoConfiguration'
+        String nonExistingNode = 'cn=NoConfiguration'
         LDAPConfigurationSource source = new LDAPConfigurationSource(testLDAPInterface,
                 new LDAPConfigurationStrategy(nonExistingNode, new Attribute('cn'), new Attribute('description')))
         FixedDelayPollingScheduler scheduler = new FixedDelayPollingScheduler(0, 10, false)
@@ -34,7 +34,7 @@ class LDAPConfigurationSourceTest extends LDAPSpecification {
 
         given:
         LDAPConfigurationSource source = new LDAPConfigurationSource(testLDAPInterface,
-                new LDAPConfigurationStrategy('ou=Configuration', new Attribute('cn'), new Attribute('description')))
+                new LDAPConfigurationStrategy('cn=Configuration', new Attribute('cn'), new Attribute('description')))
         FixedDelayPollingScheduler scheduler = new FixedDelayPollingScheduler(0, 10, false)
 
         when:
