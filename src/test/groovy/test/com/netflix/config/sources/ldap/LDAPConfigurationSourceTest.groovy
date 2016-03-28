@@ -10,8 +10,8 @@ class LDAPConfigurationSourceTest extends LDAPBaseSpecification {
 
 
     def setupSpec() {
-        def search = "ldap://${ds.getConnection().getHostPort()}/cn=Configuration,dc=example,dc=com?description?sub?(description=*)".toString()
-        LDAPConfigurationSource source = new LDAPConfigurationSource(search)
+        String ldapURL = "ldap://${ds.getConnection().getHostPort()}/cn=Configuration,dc=example,dc=com?description?sub?(description=*)".toString()
+        LDAPConfigurationSource source = new LDAPConfigurationSource(ldapURL, "uid=admin,ou=People,dc=example,dc=com", "password" as char[]);
         FixedDelayPollingScheduler scheduler = new FixedDelayPollingScheduler(0, 10, false)
 
         DynamicConfiguration configuration = new DynamicConfiguration(source, scheduler)
