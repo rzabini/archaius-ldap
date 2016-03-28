@@ -10,10 +10,10 @@ class LDAPRelativeNameTest extends Specification {
         LDAPEntry.toPropertyName(ldapName) == propertyName
 
         where:
-        ldapName            | propertyName
-        'cn=myname'         | 'myname'
-        'cn=myname.sub'     | 'myname.sub'
-        'cn=sub, ou=parent' | 'parent.sub'
+        ldapName                     | propertyName
+        'cn=myname'                  | 'myname'
+        'cn=myname.sub'              | 'myname.sub'
+        'cn=sub, ou=parent, dc=root' | 'root.parent.sub'
 
     }
 }
