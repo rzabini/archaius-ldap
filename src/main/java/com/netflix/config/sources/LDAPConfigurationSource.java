@@ -23,7 +23,4 @@ public class LDAPConfigurationSource implements PolledConfigurationSource {
         return PollResult.createFull(ldapPropertyTree.asMap());
     }
 
-
-
-
 }

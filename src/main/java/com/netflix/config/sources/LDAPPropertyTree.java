@@ -20,7 +20,6 @@ public class LDAPPropertyTree {
 
     private static Logger log = LoggerFactory.getLogger(LDAPPropertyTree.class);
 
-
     private final String ldapSearchSpecification;
     private final String bindDN;
     private final char[] password;
