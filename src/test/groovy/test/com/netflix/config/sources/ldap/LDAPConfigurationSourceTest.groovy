@@ -5,7 +5,7 @@ import com.netflix.config.sources.LDAPConfigurationSource
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-class LDAPConfigurationSourceTest extends LDAPSpecification {
+class LDAPConfigurationSourceTest extends LDAPBaseSpecification {
     private static Logger log = LoggerFactory.getLogger(LDAPConfigurationSourceTest.class);
 
 

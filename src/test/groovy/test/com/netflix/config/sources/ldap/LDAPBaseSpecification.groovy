@@ -6,7 +6,7 @@ import com.unboundid.ldif.LDIFReader
 import spock.lang.Shared
 import spock.lang.Specification
 
-abstract class LDAPSpecification extends Specification {
+abstract class LDAPBaseSpecification extends Specification {
 
     @Shared
     InMemoryDirectoryServer ds

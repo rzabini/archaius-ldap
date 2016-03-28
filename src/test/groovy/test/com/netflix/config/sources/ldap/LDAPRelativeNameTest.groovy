@@ -1,13 +1,13 @@
 package test.com.netflix.config.sources.ldap
 
-import com.netflix.config.sources.LDAPRelativeName
+import com.netflix.config.sources.LDAPEntry
 import spock.lang.Specification
 
 class LDAPRelativeNameTest extends Specification {
     def "can convert ldap name to property name"(ldapName, propertyName) {
 
         expect:
-        new LDAPRelativeName(ldapName).toPropertyName() == propertyName
+        LDAPEntry.toPropertyName(ldapName) == propertyName
 
         where:
         ldapName            | propertyName

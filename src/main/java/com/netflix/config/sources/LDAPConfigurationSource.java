@@ -31,16 +31,10 @@ public class LDAPConfigurationSource implements PolledConfigurationSource {
         Map<String, Object> map = new HashMap<String, Object>();
         NamingEnumeration<SearchResult> entries = new InitialDirContext().search(ldapSearchSpecification, "", null);
 
-        while (entries.hasMore()) {
-            final SearchResult entry = entries.next();
-            map.put(new LDAPRelativeName(entry.getName()).toPropertyName(), firstValueOfFirstAttribute(entry));
-        }
-
+        while (entries.hasMore())
+            new LDAPEntry(entries.next()).addToMap(map);
         return map;
     }
 
-    private Object firstValueOfFirstAttribute(SearchResult entry) throws NamingException {
-        return entry.getAttributes().getAll().next().get();
-    }
 
 }
